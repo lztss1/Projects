@@ -8,10 +8,12 @@ class DataLoader():
     """A class for loading and transforming data for the lstm model"""
 
     def __init__(self, split, cols):
-        dataframe = tu.get_hist_data('sh', ktype='W')
+        cols = int(cols)
+        dataframe = ts.get_hist_data('sh', ktype='W').to_numpy()
+        dataframe = dataframe[:,cols]
         i_split = int(len(dataframe) * split)
-        self.data_train = dataframe.get(cols).values[:i_split]
-        self.data_test  = dataframe.get(cols).values[i_split:]
+        self.data_train = dataframe.reshape(len(dataframe), 1)[:i_split]+1/100000
+        self.data_test  = dataframe.reshape(len(dataframe), 1)[i_split:]+1/100000
         #self.data_train = np.random.rand(2900,1)
         #self.data_test = np.random.rand(300, 1)
         self.len_train  = len(self.data_train)

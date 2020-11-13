@@ -28,7 +28,7 @@ def plot_results(predicted_data, true_data):
     ax.plot(true_data, label='True Data')
     plt.plot(predicted_data, label='Prediction')
     plt.legend()
-    pic_name = 'C:/Users/lztss/LSTM_soil/LSTM-Neural-Network-for-Time-Series-Prediction/test_pic/test'+str(i)+'.png'
+    pic_name = 'C:/Users/lztss/Projects/LSTM_SZZS/test'+'.png'
     fig.savefig(pic_name, dpi=100)
     plt.close()
 
