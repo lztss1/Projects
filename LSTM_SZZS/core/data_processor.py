@@ -9,7 +9,7 @@ class DataLoader():
 
     def __init__(self, split, cols):
         cols = int(cols)
-        dataframe = ts.get_hist_data('sh', ktype='W').to_numpy()
+        dataframe = ts.get_hist_data('sh', ktype='D').to_numpy()
         dataframe = dataframe[:,cols]
         i_split = int(len(dataframe) * split)
         self.data_train = dataframe.reshape(len(dataframe), 1)[:i_split]+1/100000
